@@ -40,8 +40,8 @@ export default function Countdown() {
   }, [weddingDate]);
 
   return (
-    <div className="flex justify-center gap-stack-lg max-w-md mx-auto py-2">
-      <div className="flex flex-col items-center min-w-[70px]">
+    <div className="flex justify-center gap-stack-sm sm:gap-stack-md md:gap-stack-lg max-w-md mx-auto py-2">
+      <div className="flex flex-col items-center min-w-[50px] sm:min-w-[60px] md:min-w-[70px]">
         <span className="font-display-lg text-headline-md md:text-display-lg text-primary transition-all duration-300">
           {timeLeft.days}
         </span>
@@ -52,7 +52,7 @@ export default function Countdown() {
       
       <div className="w-px h-16 bg-outline-variant/50 self-center"></div>
       
-      <div className="flex flex-col items-center min-w-[70px]">
+      <div className="flex flex-col items-center min-w-[50px] sm:min-w-[60px] md:min-w-[70px]">
         <span className="font-display-lg text-headline-md md:text-display-lg text-primary transition-all duration-300">
           {timeLeft.hours}
         </span>
@@ -63,7 +63,7 @@ export default function Countdown() {
       
       <div className="w-px h-16 bg-outline-variant/50 self-center"></div>
       
-      <div className="flex flex-col items-center min-w-[70px]">
+      <div className="flex flex-col items-center min-w-[50px] sm:min-w-[60px] md:min-w-[70px]">
         <span className="font-display-lg text-headline-md md:text-display-lg text-primary transition-all duration-300">
           {timeLeft.minutes}
         </span>
@@ -74,7 +74,7 @@ export default function Countdown() {
 
       <div className="w-px h-16 bg-outline-variant/50 self-center"></div>
       
-      <div className="flex flex-col items-center min-w-[70px]">
+      <div className="flex flex-col items-center min-w-[50px] sm:min-w-[60px] md:min-w-[70px]">
         <span className="font-display-lg text-headline-md md:text-display-lg text-primary transition-all duration-300">
           {timeLeft.seconds}
         </span>

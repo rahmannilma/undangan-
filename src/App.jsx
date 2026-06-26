@@ -458,6 +458,9 @@ export default function App() {
               <p className="text-[10px] text-on-surface-variant/50 tracking-tighter">
                 Designed for an Eternal Beginning
               </p>
+              <p className="text-[10px] text-on-surface-variant/50 tracking-tighter mt-1">
+                Created by Abd rahman Ilham L
+              </p>
             </div>
           </div>
         </footer>
