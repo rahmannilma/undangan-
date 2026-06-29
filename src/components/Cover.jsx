@@ -15,11 +15,11 @@ export default function Cover({ onOpen }) {
       {/* Background Image with blur & dark overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          className="w-full h-full object-cover object-bottom md:object-[center_85%] brightness-[0.4]"
+          className="w-full h-full object-cover object-bottom md:object-[center_85%] brightness-[0.85]"
           src="/foto1.jpeg"
           alt="Wedding Venue Background"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40"></div>
       </div>
 
       {/* Decorative Botanical Border Overlay */}
