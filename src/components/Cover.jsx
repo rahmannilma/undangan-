@@ -15,7 +15,7 @@ export default function Cover({ onOpen }) {
       {/* Background Image with blur & dark overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          className="w-full h-full object-cover object-bottom scale-110 -translate-y-10 md:scale-100 md:translate-y-0 md:object-[center_90%] brightness-[0.85] transition-transform duration-300"
+          className="w-full h-full object-cover object-bottom scale-115 -translate-y-16 md:scale-105 md:-translate-y-6 brightness-[0.85] transition-transform duration-300"
           src="/foto1.jpeg"
           alt="Wedding Venue Background"
         />
