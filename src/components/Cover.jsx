@@ -15,7 +15,7 @@ export default function Cover({ onOpen }) {
       {/* Background Image with blur & dark overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          className="w-full h-full object-cover object-[center_65%] md:object-[center_70%] brightness-[0.85]"
+          className="w-full h-full object-cover object-[center_90%] md:object-[center_90%] brightness-[0.85]"
           src="/foto1.jpeg"
           alt="Wedding Venue Background"
         />
@@ -39,7 +39,7 @@ export default function Cover({ onOpen }) {
 
         <div className="w-16 h-px bg-outline-variant/60 my-6"></div>
 
-        <div className="bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-outline-variant/20 mt-8 mb-8 w-full">
+        <div className="bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-outline-variant/20 mt-14 mb-6 w-full">
           <p className="font-label-caps text-[11px] tracking-widest text-primary-fixed-dim/90 mb-2">
             KEPADA YTH. BAPAK/IBU/SAUDARA/I:
           </p>
