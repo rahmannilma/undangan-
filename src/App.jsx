@@ -323,14 +323,92 @@ export default function App() {
 
               <div className="md:col-span-4 reveal" style={{ transitionDelay: "200ms" }}>
                 <div className="bg-surface-container-high p-stack-lg rounded-xl h-full flex flex-col justify-center border border-outline-variant/20 shadow-sm">
-                  <h4 className="font-headline-sm text-primary mb-4">Perjalanan Kita</h4>
-                  <p className="font-body-md text-on-surface-variant">
-                    Kisah kami dimulai dari sebuah jembatan sederhana bernama Rizky. Sebagai adik, dialah yang pertama kali mengenalkan perempuan luar biasa ini kepada saya. Sebuah pertemuan awal yang singkat, namun ternyata menjadi awal dari segalanya.
+                  <h4 className="font-headline-sm text-primary mb-6">Perjalanan Kita</h4>
+                  <div className="relative pl-10 space-y-6">
+                    {/* Vertical Line */}
+                    <div className="absolute left-5 top-2 bottom-2 w-[1px] bg-primary-container/30"></div>
 
-                    Dari perkenalan itu, obrolan kami mulai mengalir. Rasa canggung perlahan berubah menjadi kecocokan, dan kenyamanan itu menuntun kami untuk saling menjaga hati. Rizky yang awalnya hanya mengenalkan, kini menjadi saksi bagaimana hubungan kami tumbuh semakin kuat setiap harinya.
+                    {/* Item 1 */}
+                    <div className="relative">
+                      {/* Timeline Icon */}
+                      <div className="absolute -left-[38px] top-0.5 w-9 h-9 flex items-center justify-center z-10">
+                        <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-sm">
+                          <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white shadow-inner">
+                            <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+                              school
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="pl-2">
+                        <span className="text-[10px] text-primary/70 font-semibold tracking-widest uppercase block mb-0.5">
+                          Awal Mula
+                        </span>
+                        <h5 className="font-headline-sm text-sm text-primary font-semibold mb-2">
+                          Pertemuan Pertama
+                        </h5>
+                        <div className="bg-surface/60 dark:bg-surface-dim/60 p-3.5 rounded-xl border border-outline-variant/30 shadow-sm">
+                          <p className="font-body-md text-xs text-on-surface-variant leading-relaxed">
+                            Kisah kami dimulai dari sebuah jembatan sederhana bernama Rizky. Sebagai adik, dialah yang pertama kali mengenalkan perempuan luar biasa ini kepada saya. Sebuah pertemuan awal yang singkat, namun ternyata menjadi awal dari segalanya.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
 
-                    Kini, setelah melewati proses perjalanan bersama, keyakinan kami sudah bulat. Dari sebuah perkenalan yang diinisiasi oleh seorang adik, kami bersiap melangkah ke babak paling sakral: mengikat janji suci di pelaminan sebagai suami istri.
-                  </p>
+                    {/* Item 2 */}
+                    <div className="relative">
+                      {/* Timeline Icon */}
+                      <div className="absolute -left-[38px] top-0.5 w-9 h-9 flex items-center justify-center z-10">
+                        <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-sm">
+                          <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white shadow-inner">
+                            <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+                              favorite
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="pl-2">
+                        <span className="text-[10px] text-primary/70 font-semibold tracking-widest uppercase block mb-0.5">
+                          Kedekatan
+                        </span>
+                        <h5 className="font-headline-sm text-sm text-primary font-semibold mb-2">
+                          Menjalin Kedekatan
+                        </h5>
+                        <div className="bg-surface/60 dark:bg-surface-dim/60 p-3.5 rounded-xl border border-outline-variant/30 shadow-sm">
+                          <p className="font-body-md text-xs text-on-surface-variant leading-relaxed">
+                            Dari perkenalan itu, obrolan kami mulai mengalir. Rasa canggung perlahan berubah menjadi kecocokan, dan kenyamanan itu menuntun kami untuk saling menjaga hati. Rizky yang awalnya hanya mengenalkan, kini menjadi saksi bagaimana hubungan kami tumbuh semakin kuat setiap harinya.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Item 3 */}
+                    <div className="relative">
+                      {/* Timeline Icon */}
+                      <div className="absolute -left-[38px] top-0.5 w-9 h-9 flex items-center justify-center z-10">
+                        <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-sm animate-pulse">
+                          <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white shadow-inner">
+                            <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+                              diamond
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="pl-2">
+                        <span className="text-[10px] text-primary/70 font-semibold tracking-widest uppercase block mb-0.5">
+                          Komitmen
+                        </span>
+                        <h5 className="font-headline-sm text-sm text-primary font-semibold mb-2">
+                          Mengikat Janji
+                        </h5>
+                        <div className="bg-surface/60 dark:bg-surface-dim/60 p-3.5 rounded-xl border border-outline-variant/30 shadow-sm">
+                          <p className="font-body-md text-xs text-on-surface-variant leading-relaxed">
+                            Kini, setelah melewati proses perjalanan bersama, keyakinan kami sudah bulat. Dari sebuah perkenalan yang diinisiasi oleh seorang adik, kami bersiap melangkah ke babak paling sakral: mengikat janji suci di pelaminan sebagai suami istri.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -527,9 +605,11 @@ export default function App() {
         {/* Footer */}
         <footer className="w-full pt-section-padding-mobile pb-28 md:py-stack-lg bg-surface-container-low dark:bg-surface-dim border-t border-outline-variant/20">
           <div className="flex flex-col items-center gap-stack-md text-center px-gutter w-full">
-            <span className="font-headline-sm text-headline-sm text-primary">
-              Muh Ikhsan Adiputra &amp; Nurul Ilmy Ikbal
-            </span>
+            <div className="font-headline-sm text-headline-sm text-primary flex flex-col items-center leading-tight gap-1">
+              <span>Muh Ikhsan Adiputra</span>
+              <span className="text-xl italic font-serif my-0.5 text-primary/80">&amp;</span>
+              <span>Nurul Ilmy Ikbal</span>
+            </div>
             <p className="font-body-md text-body-md text-secondary">
               With Love, Muh Ikhsan Adiputra &amp; Nurul Ilmy Ikbal — 2026
             </p>
