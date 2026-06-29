@@ -10,6 +10,38 @@ export default function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
+
+  const storyItems = [
+    {
+      image: "/foto3.jpeg",
+      badge: "AWAL MULA",
+      title: "Pertemuan Tak Terduga",
+    },
+    {
+      image: "/foto5.jpeg",
+      badge: "BAHAGIA BERSAMA",
+      title: "Kisah Kita",
+    },
+    {
+      image: "/foto4.jpeg",
+      badge: "KASIH & CINTA",
+      title: "Momen Kebersamaan",
+    },
+    {
+      image: "/foto2.jpeg",
+      badge: "MENUJU HALAL",
+      title: "Janji Suci",
+    },
+  ];
+
+  const nextStory = () => {
+    setCurrentStoryIndex((prev) => (prev + 1) % storyItems.length);
+  };
+
+  const prevStory = () => {
+    setCurrentStoryIndex((prev) => (prev - 1 + storyItems.length) % storyItems.length);
+  };
 
   // Lock scroll when cover is active
   useEffect(() => {
@@ -89,11 +121,11 @@ export default function App() {
 
   const getBottomNavLinkClass = (linkId) => {
     const isActive = activeSection === linkId;
-    const iconClass = isActive 
-      ? "text-primary scale-110 font-bold" 
+    const iconClass = isActive
+      ? "text-primary scale-110 font-bold"
       : "text-on-surface-variant/60 hover:text-primary";
-    const labelClass = isActive 
-      ? "text-[10px] font-bold text-primary tracking-wider mt-1 scale-100" 
+    const labelClass = isActive
+      ? "text-[10px] font-bold text-primary tracking-wider mt-1 scale-100"
       : "text-[10px] font-medium text-on-surface-variant/60 mt-1 scale-95";
     return { iconClass, labelClass, isActive };
   };
@@ -111,9 +143,8 @@ export default function App() {
     <div className="relative min-h-screen text-on-surface bg-surface font-body-md overflow-x-hidden">
       {/* 1. Welcome Cover Screen */}
       <div
-        className={`fixed inset-0 z-[100] transition-all duration-[1200ms] ease-in-out ${
-          isOpen ? "-translate-y-full opacity-0 pointer-events-none" : "translate-y-0"
-        }`}
+        className={`fixed inset-0 z-[100] transition-all duration-[1200ms] ease-in-out ${isOpen ? "-translate-y-full opacity-0 pointer-events-none" : "translate-y-0"
+          }`}
       >
         <Cover onOpen={() => { setIsOpen(true); setIsPlaying(true); }} />
       </div>
@@ -129,9 +160,9 @@ export default function App() {
         <nav className="hidden md:block fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant/30">
           <div className="flex justify-between items-center px-gutter py-stack-md max-w-container-max mx-auto">
             <span className="font-headline-sm text-headline-sm text-primary">
-              Ikhsan &amp; Ny Ikhsan
+              Muh Ikhsan Adiputra &amp; Nurul Ilmy Ikbal
             </span>
-            
+
             {/* Desktop Navigation */}
             <div className="flex gap-stack-lg items-center">
               {navLinks.map((link) => (
@@ -167,9 +198,8 @@ export default function App() {
                 className="flex flex-col items-center justify-center flex-1 py-1 transition-all duration-200"
               >
                 {/* Background pill effect on active icon */}
-                <div className={`flex items-center justify-center w-12 h-7 rounded-full transition-all duration-300 ${
-                  isActive ? "bg-primary/15" : "bg-transparent"
-                }`}>
+                <div className={`flex items-center justify-center w-12 h-7 rounded-full transition-all duration-300 ${isActive ? "bg-primary/15" : "bg-transparent"
+                  }`}>
                   <span className={`material-symbols-outlined text-2xl transition-all duration-300 ${iconClass}`}>
                     {link.icon}
                   </span>
@@ -187,7 +217,7 @@ export default function App() {
           <div className="absolute inset-0 z-0">
             <img
               className="w-full h-full object-cover opacity-90 scale-105 animate-[pulse_10s_ease-in-out_infinite]"
-              src="/bg-prewedding.png"
+              src="/fotobackground.jpeg"
               alt="Ikhsan &amp; Ny Ikhsan Wedding Venue"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-surface/20 via-transparent to-surface"></div>
@@ -196,8 +226,10 @@ export default function App() {
             <span className="font-label-caps text-label-caps text-primary tracking-[0.4em] mb-stack-md block">
               SAVE THE DATE
             </span>
-            <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-stack-sm drop-shadow-md">
-              Ikhsan &amp; Ny Ikhsan
+            <h1 className="font-display-lg text-3xl sm:text-4xl md:text-5xl text-primary mb-stack-sm drop-shadow-md flex flex-col items-center leading-tight gap-1 text-center">
+              <span>Muh Ikhsan Adiputra</span>
+              <span className="text-2xl sm:text-3xl italic font-serif my-1 text-primary/80">&amp;</span>
+              <span>Nurul Ilmy Ikbal</span>
             </h1>
             <p className="font-headline-sm text-headline-sm italic text-secondary mb-stack-lg">
               Minggu, 02 Agustus 2026
@@ -237,20 +269,55 @@ export default function App() {
         <section className="py-section-padding-mobile md:py-section-padding-desktop bg-surface-container-low" id="story">
           <div className="max-w-container-max mx-auto px-gutter">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
-              
+
               <div className="md:col-span-8 reveal">
                 <div className="relative group overflow-hidden rounded-xl h-[400px] shadow-sm">
                   <img
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    src="/story-lavender.png"
-                    alt="Ikhsan and Ny Ikhsan walking through a sun-drenched lavender field in Bali"
+                    key={currentStoryIndex}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                    src={storyItems[currentStoryIndex].image}
+                    alt={storyItems[currentStoryIndex].title}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-stack-lg">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end justify-between p-stack-lg pointer-events-none">
                     <div>
-                      <span className="font-label-caps text-white/80 mb-2 block">AWAL MULA</span>
-                      <h3 className="font-headline-sm text-white">Pertemuan Tak Terduga</h3>
+                      <span className="font-label-caps text-white/80 mb-2 block tracking-widest">
+                        {storyItems[currentStoryIndex].badge}
+                      </span>
+                      <h3 className="font-headline-sm text-white">
+                        {storyItems[currentStoryIndex].title}
+                      </h3>
+                    </div>
+
+                    {/* Navigation Dots */}
+                    <div className="flex gap-1.5 mb-1 pointer-events-auto">
+                      {storyItems.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setCurrentStoryIndex(idx)}
+                          className={`h-2 rounded-full transition-all duration-300 ${idx === currentStoryIndex ? "bg-white w-6" : "bg-white/50 w-2"
+                            }`}
+                        />
+                      ))}
                     </div>
                   </div>
+
+                  {/* Left Arrow */}
+                  <button
+                    onClick={prevStory}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center backdrop-blur-sm transition-all opacity-80 hover:opacity-100 active:scale-95 z-10"
+                    aria-label="Previous Slide"
+                  >
+                    <span className="material-symbols-outlined">chevron_left</span>
+                  </button>
+
+                  {/* Right Arrow */}
+                  <button
+                    onClick={nextStory}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center backdrop-blur-sm transition-all opacity-80 hover:opacity-100 active:scale-95 z-10"
+                    aria-label="Next Slide"
+                  >
+                    <span className="material-symbols-outlined">chevron_right</span>
+                  </button>
                 </div>
               </div>
 
@@ -258,7 +325,11 @@ export default function App() {
                 <div className="bg-surface-container-high p-stack-lg rounded-xl h-full flex flex-col justify-center border border-outline-variant/20 shadow-sm">
                   <h4 className="font-headline-sm text-primary mb-4">Perjalanan Kita</h4>
                   <p className="font-body-md text-on-surface-variant">
-                    Dari sekadar tegur sapa di sebuah kedai kopi kecil hingga petualangan keliling dunia, setiap momen bersama telah membentuk ikatan yang tak terpisahkan.
+                    Kisah kami dimulai dari sebuah jembatan sederhana bernama Rizky. Sebagai adik, dialah yang pertama kali mengenalkan perempuan luar biasa ini kepada saya. Sebuah pertemuan awal yang singkat, namun ternyata menjadi awal dari segalanya.
+
+                    Dari perkenalan itu, obrolan kami mulai mengalir. Rasa canggung perlahan berubah menjadi kecocokan, dan kenyamanan itu menuntun kami untuk saling menjaga hati. Rizky yang awalnya hanya mengenalkan, kini menjadi saksi bagaimana hubungan kami tumbuh semakin kuat setiap harinya.
+
+                    Kini, setelah melewati proses perjalanan bersama, keyakinan kami sudah bulat. Dari sebuah perkenalan yang diinisiasi oleh seorang adik, kami bersiap melangkah ke babak paling sakral: mengikat janji suci di pelaminan sebagai suami istri.
                   </p>
                 </div>
               </div>
@@ -297,7 +368,7 @@ export default function App() {
             <h2 className="font-display-lg text-headline-md md:text-headline-md text-center text-primary mb-stack-lg">
               Detail Acara
             </h2>
-            
+
             <div className="bg-surface-container-lowest p-stack-lg md:p-12 border border-outline-variant/30 rounded-xl reveal flex flex-col items-center text-center shadow-sm">
               {/* Save The Date Block */}
               <span className="material-symbols-outlined text-secondary text-5xl mb-4">
@@ -307,9 +378,10 @@ export default function App() {
               <p className="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">
                 Minggu, 02 Agustus 2026
               </p>
-              <p className="font-body-lg text-body-lg text-on-surface-variant mb-6 font-medium">
-                Akad Nikah: 10.00 WITA &nbsp;|&nbsp; Resepsi: 11.00 WITA
-              </p>
+              <div className="font-body-lg text-body-lg text-on-surface-variant mb-6 font-medium max-w-lg leading-relaxed flex flex-col gap-1">
+                <span>Resepsi: 10.00 WITA - Sampai Selesai</span>
+                <span>Akad Nikah: Sultan Alauddin Hotel &amp; Convention pada tanggal 26 Juli 2026</span>
+              </div>
 
               {/* Countdown Divider */}
               <div className="w-full h-px bg-outline-variant/20 my-6"></div>
@@ -327,18 +399,33 @@ export default function App() {
                 location_on
               </span>
               <h3 className="font-label-caps text-label-caps text-primary tracking-widest mb-2">Lokasi Acara</h3>
-              <p className="font-body-lg text-body-lg text-on-surface mb-6 leading-relaxed max-w-md">
-                Pattinrukang, Desa Tanete, Kec. Tompobulu, Kab. Gowa
+              <p className="font-body-lg text-body-lg text-on-surface mb-4 leading-relaxed max-w-md flex flex-col gap-1">
+                <span>Lingkungan Pure 1 (Sd Inpres Pure)</span>
+                <span>Kec. Kalukku,Kab. Mamuju Sulawesi Barat</span>
               </p>
-              
+
+              {/* Embedded Google Map */}
+              <div className="w-full h-64 sm:h-80 rounded-xl overflow-hidden my-6 border border-outline-variant/30 shadow-sm">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31886.49663029139!2d119.02671373885525!3d-2.567828311284466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d92e7a67620231b%3A0xd1e6c15ffc1f02f4!2sSD%20inpres%20pure!5e0!3m2!1sid!2sid!4v1782742033602!5m2!1sid!2sid"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="Peta Lokasi Acara"
+                ></iframe>
+              </div>
+
               <a
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-primary text-on-primary hover:bg-primary-container px-8 py-3 rounded-full font-label-caps text-label-caps tracking-widest transition-all duration-300 transform hover:scale-105 shadow-md active:scale-95"
-                href="https://maps.google.com/?q=Pattinrukang,+Desa+Tanete,+Kec.+Tompobulu,+Kab.+Gowa"
+                href="https://maps.google.com/?q=SD+inpres+pure"
               >
                 <span className="material-symbols-outlined text-sm">map</span>
-                LIHAT PETA LOKASI
+                BUKA DI GOOGLE MAPS
               </a>
             </div>
           </div>
@@ -356,38 +443,46 @@ export default function App() {
                 Setiap foto bercerita tentang tawa, cinta, dan janji yang kami pegang teguh.
               </p>
             </div>
-            
+
             <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-              
+
               <div className="break-inside-avoid reveal">
                 <img
-                  className="w-full rounded-lg shadow-sm border border-white p-2 bg-white"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-KBX0vUps_ewUqNyl5wQOalkqZ41UlbDvkaa4ravqcmIaBAlHXEZD_RHX_XWTsRHM41L0RcM6rTQZ_-7W091sFFAqS1rrNfE-dzLMXwnQ1q30ptSCU95XIRAVDy1jSUNCsEB6nac3FSOXHEQNdhl7sdKdadLKdaEyYAMHzRSxGA2eXCuCoMW1TSKgRn1bDPam_2WbUn9xSln4AWsNCLUihXL5E4xW9RIt5QEm4XKi7G1DDypBneo-QuUu3KqeR0jRlGQnDzdTgqwi"
-                  alt="Wedding invitation flatlay with lavender"
+                  className="w-full rounded-lg shadow-sm border border-white p-2 bg-white object-cover"
+                  src="/foto1.jpeg"
+                  alt="Foto Galeri 1"
                 />
               </div>
 
               <div className="break-inside-avoid reveal">
                 <img
-                  className="w-full rounded-lg shadow-sm border border-white p-2 bg-white"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAga9vBy9OWy99Zf1MJJHpCinYlPI0fhRBrHeBi6pNGghzsoCKyvTGB3gNuLINaWAGoxo1FyqA2EP_MFgfjNQ0742GF7CpkIYQBQHlhzbTqNsodNXRaz8xoGcE1PYtHqnklRbeLsA6rpbKsQseSgN_mztD0lxt1gwXV9eadSEnrY9tsq4Dqlrf9dBw-btbVoogUzXafN4ClJsdzScOnBaLVEaYRHc3DRpNmloRN-BOyOwZTVIPvset8XfzU9lFF8seJh1Q53o05oELH"
-                  alt="Ikhsan and Ny Ikhsan on marble staircase"
+                  className="w-full rounded-lg shadow-sm border border-white p-2 bg-white object-cover"
+                  src="/foto2.jpeg"
+                  alt="Foto Galeri 2"
                 />
               </div>
 
               <div className="break-inside-avoid reveal">
                 <img
-                  className="w-full rounded-lg shadow-sm border border-white p-2 bg-white"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCacOKfCxXqguCTmen0DVLQ3d5eQENwtgUnMyzgqsyDLOC8cY4xg5RNeFISpc8Tt5A_GsllphHP6aAbFbj17H0Bb2XCaqi6r9qGTpbs_O27m2yMbrnQ_TYZhj30f1isqk5SojiSLLZMWzdsA-P4HQ1s7obDWmT9GVCHQ9v-4bp-y4Qmo6JUXVR9KOw4k6FtIG9qHM9qGsV56jnFPfwZ9QxGId2OynkRVK7kJgg7FkyQ5ka3hFv_J-5QiHok9hoepVWdBsrkDbOIeLY4"
-                  alt="Ethereal rose bouquet close-up"
+                  className="w-full rounded-lg shadow-sm border border-white p-2 bg-white object-cover"
+                  src="/foto3.jpeg"
+                  alt="Foto Galeri 3"
                 />
               </div>
 
               <div className="break-inside-avoid reveal">
                 <img
-                  className="w-full rounded-lg shadow-sm border border-white p-2 bg-white"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKZ5W-Npo8nnaJ5Op_fn19kqK4fUKYuas6DU3F4a6xsC7ZVY4OZfF7dQcmGRHpG5jxry5EMyHDVFfnDQ-GkLNzCLRRe4U6CUUH5tL174VrDV5wpYpRva_srbyQa7gZ_zx8KCqlXYUu-jXwvRgWsZrT3HulSQ6eVQ_CQ4p7BmKYufH29Fvdhk0O7321p7gSbT81SGhrIte_JJWCk9DnsxwrMq37I-uxuZrADEVYeZiJfSBCe_HqHJ7DpjcaL83pni8OYJVaQHVd8sSt"
-                  alt="Ceremony setup cathedral background"
+                  className="w-full rounded-lg shadow-sm border border-white p-2 bg-white object-cover"
+                  src="/foto4.jpeg"
+                  alt="Foto Galeri 4"
+                />
+              </div>
+
+              <div className="break-inside-avoid reveal">
+                <img
+                  className="w-full rounded-lg shadow-sm border border-white p-2 bg-white object-cover"
+                  src="/foto5.jpeg"
+                  alt="Foto Galeri 5"
                 />
               </div>
 
@@ -433,10 +528,10 @@ export default function App() {
         <footer className="w-full pt-section-padding-mobile pb-28 md:py-stack-lg bg-surface-container-low dark:bg-surface-dim border-t border-outline-variant/20">
           <div className="flex flex-col items-center gap-stack-md text-center px-gutter w-full">
             <span className="font-headline-sm text-headline-sm text-primary">
-              Ikhsan &amp; Ny Ikhsan
+              Muh Ikhsan Adiputra &amp; Nurul Ilmy Ikbal
             </span>
             <p className="font-body-md text-body-md text-secondary">
-              With Love, Ikhsan &amp; Ny Ikhsan — 2026
+              With Love, Muh Ikhsan Adiputra &amp; Nurul Ilmy Ikbal — 2026
             </p>
             <div className="flex gap-stack-lg">
               <a

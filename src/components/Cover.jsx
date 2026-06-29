@@ -15,8 +15,8 @@ export default function Cover({ onOpen }) {
       {/* Background Image with blur & dark overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          className="w-full h-full object-cover brightness-[0.4]"
-          src="/bg-prewedding.png"
+          className="w-full h-full object-cover object-bottom md:object-[center_85%] brightness-[0.4]"
+          src="/foto1.jpeg"
           alt="Wedding Venue Background"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
@@ -26,13 +26,15 @@ export default function Cover({ onOpen }) {
       <div className="absolute inset-8 z-10 border border-primary-container/30 rounded-xl pointer-events-none"></div>
 
       {/* Content */}
-      <div className="relative z-20 flex flex-col items-center justify-center h-full max-w-lg mx-auto py-12">
+      <div className="relative z-20 flex flex-col items-center justify-center h-full max-w-lg mx-auto py-8 px-4 overflow-y-auto">
         <span className="font-label-caps text-label-caps text-primary-fixed tracking-[0.4em] mb-stack-md block">
           THE WEDDING OF
         </span>
-        
-        <h1 className="font-display-lg text-[48px] md:text-display-lg text-primary-fixed mb-stack-sm drop-shadow-md">
-          Ikhsan &amp; Ny Ikhsan
+
+        <h1 className="font-display-lg text-3xl sm:text-4xl md:text-5xl text-primary-fixed mb-stack-sm drop-shadow-md flex flex-col items-center leading-tight gap-1 text-center">
+          <span>Muh Ikhsan Adiputra</span>
+          <span className="text-2xl sm:text-3xl italic font-serif my-1 text-primary-fixed-dim">&amp;</span>
+          <span>Nurul Ilmy Ikbal</span>
         </h1>
 
         <div className="w-16 h-px bg-outline-variant/60 my-6"></div>
