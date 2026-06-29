@@ -216,7 +216,7 @@ export default function App() {
         <header id="home" className="relative h-screen w-full flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              className="w-full h-full object-cover opacity-90 scale-105 animate-[pulse_10s_ease-in-out_infinite]"
+              className="w-full h-full object-cover object-[center_15%] md:object-center opacity-90 scale-105 animate-[pulse_10s_ease-in-out_infinite]"
               src="/fotobackground.jpeg"
               alt="Ikhsan &amp; Ny Ikhsan Wedding Venue"
             />
