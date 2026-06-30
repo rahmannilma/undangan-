@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { supabase } from "../lib/supabase";
 
 export default function RSVPForm() {
   const [formData, setFormData] = useState({
@@ -9,6 +10,28 @@ export default function RSVPForm() {
   });
   
   const [status, setStatus] = useState("idle"); // idle, loading, success
+  const [totalAttending, setTotalAttending] = useState(null);
+
+  const fetchAttendingStats = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("rsvps")
+        .select("guests")
+        .eq("attendance", "hadir");
+
+      if (error) throw error;
+
+      // Sum up the guests count
+      const total = data.reduce((sum, item) => sum + (parseInt(item.guests, 10) || 0), 0);
+      setTotalAttending(total);
+    } catch (err) {
+      console.error("Gagal mengambil data kehadiran:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchAttendingStats();
+  }, []);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -18,7 +41,7 @@ export default function RSVPForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name.trim()) {
       alert("Silakan masukkan nama lengkap Anda.");
@@ -27,10 +50,31 @@ export default function RSVPForm() {
 
     setStatus("loading");
     
-    // Simulate server request
-    setTimeout(() => {
+    try {
+      // Masukkan data ke tabel 'rsvps' di Supabase
+      const { error } = await supabase
+        .from("rsvps")
+        .insert([
+          {
+            name: formData.name,
+            attendance: formData.attendance,
+            guests: formData.attendance === "tidak-hadir" ? 0 : parseInt(formData.guests, 10),
+            dietary: formData.dietary || null
+          }
+        ]);
+
+      if (error) {
+        throw error;
+      }
+      
+      // Update statistics
+      await fetchAttendingStats();
       setStatus("success");
-    }, 1500);
+    } catch (error) {
+      console.error("Error saving to Supabase:", error);
+      alert("Gagal mengirim konfirmasi kehadiran: " + (error.message || error));
+      setStatus("idle");
+    }
   };
 
   const resetForm = () => {
@@ -59,6 +103,11 @@ export default function RSVPForm() {
           <p className="font-body-md text-on-surface-variant italic">
             Mohon kesediaannya untuk mengonfirmasi kehadiran Anda sebelum tanggal 10 Oktober 2024
           </p>
+          {totalAttending !== null && (
+            <div className="inline-block mt-3 px-4 py-1.5 bg-primary/5 rounded-full text-xs font-semibold text-primary border border-primary/10 animate-fade-in">
+              ✨ {totalAttending} Tamu Telah Konfirmasi Hadir
+            </div>
+          )}
         </div>
 
         {status === "success" ? (
@@ -70,6 +119,14 @@ export default function RSVPForm() {
             <p className="font-body-md text-on-surface-variant max-w-md mx-auto">
               Terima kasih atas konfirmasi Anda. Kehadiran dan doa restu Anda sangat berarti bagi kami.
             </p>
+            {totalAttending !== null && (
+              <div className="my-4 p-4 bg-primary/5 border border-primary/10 rounded-xl max-w-sm mx-auto">
+                <span className="text-xs font-label-caps text-on-surface-variant tracking-wider uppercase">Total Hadir Terkonfirmasi</span>
+                <div className="text-3xl font-headline-md text-primary font-bold mt-1">
+                  {totalAttending} Orang
+                </div>
+              </div>
+            )}
             <button
               onClick={resetForm}
               className="mt-4 px-6 py-2 border border-primary text-primary hover:bg-primary/5 rounded-full font-label-caps text-label-caps transition-all"

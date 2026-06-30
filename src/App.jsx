@@ -342,7 +342,7 @@ export default function App() {
                       </div>
                       <div className="pl-2">
                         <span className="text-[10px] text-primary/70 font-semibold tracking-widest uppercase block mb-0.5">
-                          Awal Mula
+                          Awal Mula — 31 Januari 2025
                         </span>
                         <h5 className="font-headline-sm text-sm text-primary font-semibold mb-2">
                           Pertemuan Pertama
@@ -396,7 +396,7 @@ export default function App() {
                       </div>
                       <div className="pl-2">
                         <span className="text-[10px] text-primary/70 font-semibold tracking-widest uppercase block mb-0.5">
-                          Komitmen
+                          Komitmen — 15 Juni 2026
                         </span>
                         <h5 className="font-headline-sm text-sm text-primary font-semibold mb-2">
                           Mengikat Janji
