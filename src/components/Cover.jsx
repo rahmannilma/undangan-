@@ -27,7 +27,7 @@ export default function Cover({ onOpen }) {
 
       {/* Content */}
       <div className="relative z-20 flex flex-col items-center justify-center h-full max-w-lg mx-auto py-8 px-4 overflow-y-auto">
-        <span className="font-label-caps text-label-caps text-primary-fixed tracking-[0.4em] mb-stack-md block">
+        <span className="font-label-caps text-label-caps text-primary-fixed tracking-[0.4em] mb-stack-md block mt-12">
           THE WEDDING OF
         </span>
 
