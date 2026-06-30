@@ -160,7 +160,7 @@ export default function App() {
         <nav className="hidden md:block fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant/30">
           <div className="flex justify-between items-center px-gutter py-stack-md max-w-container-max mx-auto">
             <span className="font-headline-sm text-headline-sm text-primary">
-              Muh Ikhsan Adiputra &amp; Nurul Ilmy Ikbal
+              Pratu M.Ihsan Adi Putra &amp; Nurul Ilmy Ikbal, S.Kes
             </span>
 
             {/* Desktop Navigation */}
@@ -227,9 +227,9 @@ export default function App() {
               SAVE THE DATE
             </span>
             <h1 className="font-display-lg text-3xl sm:text-4xl md:text-5xl text-primary mb-stack-sm drop-shadow-md flex flex-col items-center leading-tight gap-1 text-center">
-              <span>Muh Ikhsan Adiputra</span>
+              <span>Pratu M.Ihsan Adi Putra</span>
               <span className="text-2xl sm:text-3xl italic font-serif my-1 text-primary/80">&amp;</span>
-              <span>Nurul Ilmy Ikbal</span>
+              <span>Nurul Ilmy Ikbal, S.Kes</span>
             </h1>
             <p className="font-headline-sm text-headline-sm italic text-secondary mb-stack-lg">
               Minggu, 02 Agustus 2026
@@ -589,14 +589,14 @@ export default function App() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <RegistryCard
-                bankName="BCA"
-                accountNumber="1234 5678 90"
-                accountHolder="Ny Ikhsan"
+                bankName="BSI"
+                accountNumber="7304905004"
+                accountHolder="Nurul Ilmy"
               />
               <RegistryCard
-                bankName="Mandiri"
-                accountNumber="0987 6543 21"
-                accountHolder="Ikhsan"
+                bankName="BSI"
+                accountNumber="7349304157"
+                accountHolder="M.Ihsan Adi Putra"
               />
             </div>
           </div>
@@ -606,12 +606,12 @@ export default function App() {
         <footer className="w-full pt-section-padding-mobile pb-28 md:py-stack-lg bg-surface-container-low dark:bg-surface-dim border-t border-outline-variant/20">
           <div className="flex flex-col items-center gap-stack-md text-center px-gutter w-full">
             <div className="font-headline-sm text-headline-sm text-primary flex flex-col items-center leading-tight gap-1">
-              <span>Muh Ikhsan Adiputra</span>
+              <span>Pratu M.Ihsan Adi Putra</span>
               <span className="text-xl italic font-serif my-0.5 text-primary/80">&amp;</span>
-              <span>Nurul Ilmy Ikbal</span>
+              <span>Nurul Ilmy Ikbal, S.Kes</span>
             </div>
             <p className="font-body-md text-body-md text-secondary">
-              With Love, Muh Ikhsan Adiputra &amp; Nurul Ilmy Ikbal — 2026
+              With Love, Pratu M.Ihsan Adi Putra &amp; Nurul Ilmy Ikbal, S.Kes — 2026
             </p>
             <div className="flex gap-stack-lg">
               <a

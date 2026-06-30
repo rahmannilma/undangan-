@@ -5,7 +5,7 @@ export default function Cover({ onOpen }) {
   const getGuestName = () => {
     const params = new URLSearchParams(window.location.search);
     const guestName = params.get("to");
-    return guestName ? decodeURIComponent(guestName) : "Tamu Undangan";
+    return guestName ? decodeURIComponent(guestName).replace(/_/g, " ") : "Tamu Undangan";
   };
 
   const guestName = getGuestName();
@@ -32,9 +32,9 @@ export default function Cover({ onOpen }) {
         </span>
 
         <h1 className="font-display-lg text-3xl sm:text-4xl md:text-5xl text-primary-fixed mb-stack-sm drop-shadow-md flex flex-col items-center leading-tight gap-1 text-center">
-          <span>Muh Ikhsan Adiputra</span>
+          <span>Pratu M.Ihsan Adi Putra</span>
           <span className="text-2xl sm:text-3xl italic font-serif my-1 text-primary-fixed-dim">&amp;</span>
-          <span>Nurul Ilmy Ikbal</span>
+          <span>Nurul Ilmy Ikbal, S.Kes</span>
         </h1>
 
         <div className="w-16 h-px bg-outline-variant/60 my-6"></div>
